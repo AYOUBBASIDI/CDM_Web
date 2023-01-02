@@ -1,2 +1,15 @@
 20230102	09:44:04	d444645f-75cd-4182-8ef8-282978ff9647	GET	undefined	/
 20230102	09:44:05	bf663926-164a-4348-8fb6-8545869a5cfd	GET	undefined	/favicon.ico
+20230102	10:01:42	03b48664-5659-42d7-a1ff-0bf9c390480c	POST	undefined	/register
+20230102	10:02:45	fa33883f-56c4-471a-a0eb-bb020705c6ac	POST	undefined	/auth
+20230102	10:07:31	0cefaf8e-04a8-4dff-8d7e-4797d02b93a3	POST	undefined	/auth
+20230102	10:08:19	ab9379e6-52d2-437c-a3d6-3d0c17f469d7	GET	undefined	/logout
+20230102	10:58:16	3dca104a-dc86-4033-ab2e-d87a7167bcd4	POST	undefined	/api/cdm/auth
+20230102	11:03:10	7799997a-8eb4-4d46-bdfd-d13b7e28e611	POST	undefined	/api/cdm/register
+20230102	11:09:20	1be25846-c830-4670-84c0-a64927287b06	POST	undefined	/api/cdm/register
+20230102	11:10:27	a3b35fb4-2c0a-4ddc-95b1-590cacbc77f8	POST	undefined	/api/cdm/register
+20230102	11:16:50	25bfe677-5bfb-4cd7-8c73-b34e483139e7	POST	undefined	/api/cdm/register
+20230102	11:22:00	21218c98-6bb2-4f0b-8bc4-6ab4ad97123f	POST	undefined	/api/cdm/register
+20230102	11:34:27	5bc7bf30-d10d-4872-999a-d2369c771b4e	POST	undefined	/api/cdm/auth
+20230102	11:36:04	0116358c-212c-4e38-8a68-b3e067beb607	POST	undefined	/api/cdm/auth
+20230102	11:36:46	92b87077-e544-475c-8720-861f71ddb111	GET	undefined	/api/cdm/logout
