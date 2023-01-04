@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
-    user : {
+    nom : {
+        type : String,
+        required: true
+    },
+    prenom : {
         type : String,
         required: true
     },
@@ -9,13 +13,41 @@ const UserSchema = mongoose.Schema({
         type : String,
         required: true
     },
-    pwd : {
+    tel : {
+        type : String,
+        required: true
+    },
+    cin : {
+        type : String,
+        required: true
+    },
+    agence : {
+        type : String,
+        required: true
+    },
+    address : {
+        type : String,
+        required: true
+    },
+    identifiant : {
+        type : String,
+        required: true
+    },
+    password : {
+        type : String,
+        required: true
+    },
+    type : {
+        type : String,
+        required: true
+    },
+    role : {
         type : String,
         required: true
     },
     refreshToken : {
         type : String,
-    },
+    }
 })
 
 

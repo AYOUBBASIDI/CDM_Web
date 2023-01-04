@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginForm from './components/Auth/LoginForm';
+
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      React + Tailwind CSS
-    </h1>
+    <LoginForm />
   );
 }
 

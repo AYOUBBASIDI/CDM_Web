@@ -11,9 +11,13 @@ const credentials = require('./middleware/credentials');
 const PORT = process.env.PORT || 8081;
 const connectDB = require('./config/db/db');
 const router = require('./routes/index');
+const expressLayouts = require('express-ejs-layouts');
 
 // custom middleware logger
 app.use(logger);
+
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
@@ -36,6 +40,7 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 
 // router
 app.use('/api/cdm/', router);
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 app.all('*', (req, res) => {
     res.status(404);

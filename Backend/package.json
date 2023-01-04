@@ -14,11 +14,21 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "date-fns": "^2.23.0",
+    "docx": "^7.8.1",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.8",
     "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.8.2",
-    "uuid": "^8.3.2"
+    "nodemailer": "^6.8.0",
+    "officegen": "^0.6.5",
+    "open": "^8.4.0",
+    "pdf-creator-node": "^2.3.5",
+    "pdfkit": "^0.13.0",
+    "tempfile": "^4.0.0",
+    "uuid": "^8.3.2",
+    "voilab-pdf-table": "^0.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
