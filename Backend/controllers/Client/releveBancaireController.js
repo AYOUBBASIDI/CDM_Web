@@ -8,7 +8,7 @@ const open = require('open');
 
 
 const downloadRB = async (req, res) => {
-        const html = fs.readFileSync(path.join(__dirname, '../helpers/template.html'), 'utf-8');
+        const html = fs.readFileSync(path.join(__dirname, '../../helpers/template.html'), 'utf-8');
         const filename = Math.random() + '_doc' + '.pdf';
         let array = [];
 

@@ -5,10 +5,9 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
-const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 const connectDB = require('./config/db/db');
 const router = require('./routes/index');
 const expressLayouts = require('express-ejs-layouts');
@@ -34,7 +33,6 @@ app.use(express.json());
 
 //middleware for cookies
 app.use(cookieParser());
-
 //serve static files
 app.use('/', express.static(path.join(__dirname, '/public')));
 

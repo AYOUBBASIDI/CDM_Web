@@ -23,9 +23,9 @@ router.use('/download' , download)
 router.use(verifyJWT);
 router.use('/transactions', transactions);
 router.use('/recharge', recharge);
-router.use('/activites' , activites)
-router.use('/user' , user)
-router.use('/admin' , admin)
+router.use('/activites' , activites);
+router.use('/user' , user);
+router.use('/admin' , admin);
 
 
 module.exports = router;

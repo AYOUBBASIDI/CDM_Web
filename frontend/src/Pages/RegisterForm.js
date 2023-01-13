@@ -4,10 +4,13 @@ import Footer from '../components/Footer.js';
 import ClientGenre from '../components/ClientGenre.js';
 
 function RegisterForm() {
+    const receivedData = (genre) => {
+      console.log(genre);
+    }
     return (
         <div>
           <Header/>
-          <ClientGenre/>
+          <ClientGenre getGenre={receivedData}/>
           <Footer/>
         </div>
     );

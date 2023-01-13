@@ -166,3 +166,5 @@
 20230104	14:09:21	f03ce48d-5083-4ba8-817d-a456041a299a	Error: ENOENT: no such file or directory, stat 'C:\wamp64\www\CDM_Web\Backend\views\404.html'
 20230104	14:48:40	7b5d58f1-3dd6-483e-be20-58b590fe96b2	Error: ENOENT: no such file or directory, stat 'C:\wamp64\www\CDM_Web\Backend\views\404.html'
 20230104	14:57:53	5d3be961-4ddb-43fa-9150-3c819309a60a	Error: ENOENT: no such file or directory, stat 'C:\wamp64\www\CDM_Web\Backend\views\404.html'
+20230109	16:32:56	fd78d3d9-df44-44fd-a93a-7e735da7de36	Error: Not allowed by CORS
+20230112	17:01:22	c12c0880-5399-4422-800d-c1e889780a94	Error: ENOENT: no such file or directory, stat 'C:\wamp64\www\CDM_Web\Backend\views\404.html'

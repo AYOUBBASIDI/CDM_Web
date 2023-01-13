@@ -7,22 +7,22 @@ require('dotenv').config();
 const handleLogin = async (req, res) => {
     const { identifiant, password } = req.body;
     if (!identifiant || !password) return res.status(400).json({ 'message': 'Username and password are required.' });
-    const foundUser = await Users.find({identifiant : identifiant});
+    const foundUser = await Users.findOne({identifiant : identifiant});
 
     // Check if user exists
-    if (foundUser.length === 0) return res.sendStatus(401);
+    if (foundUser.length === 0) return res.status(200).json({ 'message': 'No account'});
 
     //Cechk if user admin or client
-    if (foundUser[0].role === 'admin') {
+    if (foundUser.role === 'admin') {
         res.json({ 'message': 'Welcome Admin' });
     }else{
-        const match = await bcrypt.compare(password, foundUser[0].password);
+        const match = await bcrypt.compare(password, foundUser.password);
         if (match) {
             // create JWTs
             const accessToken = jwt.sign(
                 { "cin": foundUser.cin },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '5m' }
+                { expiresIn: '1d' }
             );
             const refreshToken = jwt.sign(
                 { "cin": foundUser.cin },
@@ -30,11 +30,11 @@ const handleLogin = async (req, res) => {
                 { expiresIn: '1d' }
             );
             // Saving refreshToken with current user
-            await Users.updateOne({ cin: foundUser[0].cin}, { refreshToken: refreshToken });
+            await Users.updateOne({ cin: foundUser.cin}, { refreshToken: refreshToken });
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-            res.json({ accessToken });
+            res.json({ accessToken , user: foundUser});
         } else {
-            res.sendStatus(401);
+            res.status(200).json({ 'message': 'Wrong password'});
         } 
     }
 

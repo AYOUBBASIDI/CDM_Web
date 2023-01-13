@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+  
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #0071CE;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(left, #888, #777);
+}
+
 body {
   margin: 0;
   font-family: 'Gemunu Libre', sans-serif;
@@ -10,16 +24,36 @@ body {
   background-color: #F6F6F6;
 }
 
+#__react-alert__ div div div {
+  font-family: 'Gemunu Libre', sans-serif !important;
+  font-size: 1.2rem !important;
+  width: auto !important;
+  background-color: #B5DEFF !important;
+  color: #0071CE !important;
+  border-color: #c3e6cb !important;
+  align-items: flex-start !important;
+}
+
+#__react-alert__ div div div svg , #__react-alert__ div div div button svg {
+  stroke: #0071CE !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .primary-color {
-  color: #FFFFFF;
+  color: #fafafa;
+}
+.popup-back {
+  background-color: #fafafa;
 }
 .secondary-color {
   color: #0071CE;
+}
+.third-back {
+  background-color: #0071CE;
 }
 .primary-back {
   background-color: #B5DEFF;
@@ -43,4 +77,104 @@ code {
 
 .link-hover:hover {
   color: #E7004C;
+}
+
+.custom-width{
+  width: 28rem
+}
+
+.border-color{
+  border: solid 3px #0071CE;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+.popup {
+  top: -35rem;
+  left: calc(50% - 16rem);
+}
+
+.popup.show {
+  top: calc(50% - 15rem);
+}
+
+.overlay {
+  background: rgba(0, 0, 0, .5);
+}
+
+.popup.show + .overlay {
+  display: block;
+}
+
+
+
+.load {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-right: 2rem;
+}
+
+.load div {
+  width: 7px;
+  height: 7px;
+  background-color: rgb(11, 169, 213);
+  border-radius: 50%;
+  animation-name: up-and-down;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.load .two{
+  animation-delay: 0.3s;
+}
+
+.load .three{
+  animation-delay: 0.6s;
+}
+
+.scroll-max{
+  max-height: 60vh;
+}
+
+@keyframes up-and-down {
+  to{
+      opacity: 0.2;
+      transform: translateY(-10px);
+      
+  }
+}
+
+
+
+.popup-menu-container {
+  position: relative;
+}
+.popup-menu {
+  position: absolute;
+  transform: scale(0);
+  transform-origin: top right;
+  width: 10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #0071CE;
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
+  transition: transform 0.2s;
+  top: 5rem;
+  right: 4rem;
+}
+
+.popup-menu div:hover{
+  background-color: #B5DEFF;
+  color: #0071CE;
+}
+
+.popup-menu.shown {
+  transform: scale(1);
 }

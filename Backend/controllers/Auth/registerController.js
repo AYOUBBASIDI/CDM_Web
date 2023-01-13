@@ -39,7 +39,7 @@ const handleNewUser = async (req, res) => {
             role: role
         });
         newUser.save();
-        // sendEmail(nom, prenom, email, identifiant, password);
+        sendEmail(nom, prenom, email, identifiant, password);
         const newAccount = new Account({
             identifiant: identifiant,
             balance: 100,

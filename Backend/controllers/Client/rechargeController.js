@@ -23,12 +23,17 @@ const handleRecharge = async (req, res) => {
         await
             Account.updateOne({ identifiant: sender }, { balance: newSenderBalance });
         
+            const date = new Date();
+            const day = date.getDay();
+            const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            const currentDate = days[day] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
 
         const senderTransaction = {
             object: receiver,
             type : "Recharge",
             montant: amount,
-            date: Date.now(),
+            date: currentDate,
             status : "Payé"
         };
 

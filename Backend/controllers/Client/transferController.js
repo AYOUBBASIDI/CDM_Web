@@ -11,9 +11,13 @@ const handleTransfer = async (req, res) => {
         const receiverUser = await User.findOne({identifiant: receiver})  
 
         //check if sender account and receiver account exist
-        if (!senderAccount || !receiverAccount) {
-            return res.status(400).json({ message: 'Account not found' });
+        if (!receiverAccount) {
+            return res.status(400).json({ message: 'Receiver Account not found :'+receiver });
         }
+        if (!senderAccount) {
+            return res.status(400).json({ message: 'Sender Account not found : '+sender });
+        }
+        
 
         //check if sender account and receiver account are the same
         if(senderAccount.identifiant == receiverAccount.identifiant){
@@ -43,19 +47,24 @@ const handleTransfer = async (req, res) => {
         await
             Account.updateOne({ identifiant: receiver }, { balance: newReceiverBalance });
         
+        const date = new Date();
+        const day = date.getDay();
+        const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+        const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        const currentDate = days[day] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
 
         const senderTransaction = {
             object: receiverUser.nom+" "+receiverUser.prenom,
             type : "Paiement à",
             montant: amount,
-            date: Date.now(),
+            date: currentDate,
             status : "Payé"
         };
         const receiverTransaction = {
             object: senderUser.nom+" "+senderUser.prenom,
             type : "Paiement de",
             montant: amount,
-            date: Date.now(),
+            date: currentDate,
             status : "Payé"
         };
 
