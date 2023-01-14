@@ -70,6 +70,10 @@ code {
 .gradient {
   background: linear-gradient(180deg, rgba(0,59,107,1) 0%, rgba(0,59,107,0.5721638997395833) 100%);
 }
+.border-danger{
+  border: solid 2px #E7004C;
+  border-radius: 5px;
+}
 .tiny-separated{
   height: 0.01rem;
   background: #C5C5C5;
@@ -77,6 +81,10 @@ code {
 
 .link-hover:hover {
   color: #E7004C;
+}
+
+.custom-w{
+  width: 64rem;
 }
 
 .custom-width{

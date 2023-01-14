@@ -24,9 +24,9 @@ const getData = async (req, res) => {
 
 const updateData = async (req, res) => {
     //get data posted
-    const { nom, prenom, email, password, tel , address, agence } = req.body;
+    const { nom, prenom, email, tel , address, agence } = req.body;
     //check if all data are provided
-    if (!nom || !prenom || !email || !password || !tel || !address || !agence) return res.status(400).json({ 'message': 'All information are required.' });
+    if (!nom || !prenom || !email || !tel || !address || !agence) return res.status(400).json({ 'message': 'All information are required.' });
     //check if the user exists
     const user = await User.findOne({ _id: req.params.id });
     if (!user) return res.status(404).json({ 'message': 'User not found.' });
@@ -35,8 +35,6 @@ const updateData = async (req, res) => {
         $and: [{ _id: { $ne: req.params.id } }, { email: email }]
     });
     if (duplicate) return res.status(409).json({ 'message': 'Email already used.' });
-    //encrypt the password
-    const hashedPwd = await bcrypt.hash(password, 10);
     //update the user
     try {
         await User.updateOne({ _id: req.params.id }, {
@@ -44,17 +42,44 @@ const updateData = async (req, res) => {
                 nom: nom,
                 prenom: prenom,
                 email: email,
-                password: hashedPwd,
                 tel: tel,
                 address: address,
                 agence: agence
             }
         });
-        res.status(200).json({ 'message': 'User updated successfully.' });
+        const newUser = await User.findOne({ _id: req.params.id });
+        res.status(200).json(newUser);
     } catch (err) {
         res.status(500).json({ 'message': err.message });
     }
 }
+
+const updatePassword = async (req, res) => {
+    //get data posted
+    const { oldPassword, newPassword } = req.body;
+    //check if all data are provided
+    if (!oldPassword || !newPassword) return res.status(400).json({ 'message': 'All information are required.' });
+    //check if the user exists
+    const user = await User.findOne({ _id: req.params.id });
+    if (!user) return res.status(404).json({ 'message': 'User not found.' });
+    //check if the old password is correct
+    const validPassword = await bcrypt.compare(oldPassword, user.password);
+    if (!validPassword) return res.status(401).json({ 'message': 'Invalid password.' });
+    //update the password
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+        await User.updateOne({ _id: req.params.id }, {
+            $set: {
+                password: hashedPassword
+            }
+        });
+        res.status(200).json({ 'message': 'Password updated successfully.' });
+    } catch (err) {
+        res.status(500).json({ 'message': err.message });
+    }
+}
+
 
 const disableAccount = async (req, res) => {
     try {
@@ -90,6 +115,6 @@ const enableAccount = async (req, res) => {
 
 
 
-module.exports = { getActivites , getData , updateData , disableAccount , enableAccount };
+module.exports = { getActivites , getData , updateData , disableAccount , enableAccount , updatePassword };
 
 

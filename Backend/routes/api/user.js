@@ -8,6 +8,9 @@ router.route('/:id')
 router.route('/update/:id')
     .post(userController.updateData);
 
+router.route('/updatePassword/:id')
+    .post(userController.updatePassword);
+
 router.route('/disable/:identifiant')
     .post(userController.disableAccount);
 
