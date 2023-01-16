@@ -1,5 +1,6 @@
 "use strict";
 const Users = require('../../models/usersModel.js');
+const Account = require('../../models/accountModel.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();

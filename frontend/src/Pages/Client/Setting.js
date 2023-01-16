@@ -7,6 +7,7 @@ function Setting() {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const accountStatus = JSON.parse(localStorage.getItem('status'));
+    console.log(accountStatus)
     const [update , setUpdate] = useState(false);
     const [newPass , setNewPass] = useState(false);
     const [nom , setNom] = useState(user.nom);
@@ -122,28 +123,55 @@ function Setting() {
         if (window.confirm("Voulez-vous vraiment désactiver votre compte ?")) {
             const token = localStorage.getItem('token');
             const options = {
-                url: 'http://localhost:8080/api/cdm/user/disable/'+user._id,
+                url: 'http://localhost:8080/api/cdm/user/disable/'+user.identifiant,
                 method: 'POST',
                 headers: {
+                    'Authorization': 'Bearer '+token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8'
                 },
-                data: {}
             };
             axios(options)
             .then(response => {
-                console.log(response.data);
-                if (window.confirm("Votre compte a été désactivé avec succès. Voulez-vous vous disconnecter ?")) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('user');
-                    localStorage.setItem('isLogged',false);
-                    window.location.href = '/login';
-                }else{
-                    window.location.href = '/client/';
-                }
+                alert("Votre compte a été désactivé avec succès. Vous devriez vous déconnecter");
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                localStorage.removeItem('status');
+                localStorage.setItem('isLogged',false);
+                window.location.href = '/login';
             });
         } else {
-            console.log("Declined")
+            console.log("Declined");
         }
     }
+
+    const HandleActive = () => {
+        if (window.confirm("Voulez-vous vraiment activer votre compte ?")) {
+            const token = localStorage.getItem('token');
+            const options = {
+                url: 'http://localhost:8080/api/cdm/user/enable/'+user.identifiant,
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer '+token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+            };
+            axios(options)
+            .then(response => {
+                alert("Votre compte a été activé avec succès , vous allez être redirigé vers la page de connexion");
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                localStorage.removeItem('status');
+                localStorage.setItem('isLogged',false);
+                window.location.href = '/login';
+            });
+        } else {
+            console.log("Declined");
+        }
+    }
+
+
 
 
 
@@ -240,7 +268,7 @@ function Setting() {
                         <p className='underline text-lg font-bold'>Zone de confort :</p>
                         <p>Pour Activer votre compte Click sur le Bouton Activer</p>
                         <div className='text-right'>
-                            <button  className='bg-green-600 p-1/2 px-8 rounded-lg text-white' onClick={()=> HandleDisable()}>Activer</button>
+                            <button  className='bg-green-600 p-1/2 px-8 rounded-lg text-white' onClick={()=> HandleActive()}>Activer</button>
                         </div>
                     </div>
                 </div>

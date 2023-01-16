@@ -17,14 +17,15 @@ function Header(page) {
     const handleLogin = () => {
         window.location.href = '/login';
     }
+    console.log(page.page);
 
     const handleHome = () => {
-        if(page.page === "Home"){
-           window.location.href = '/'; 
-        }else{
+        if(localStorage.getItem('isLogged') == 'true'){
             window.location.href = '/client';
+        }else{
+            window.location.href = '/';
         }
-        
+
     }
 
 
