@@ -12,13 +12,15 @@ const activites = require('./api/activites.js');
 const user = require('./api/user.js');
 const download = require('./api/download.js');
 const admin = require('./api/admin.js');
+const checkToken = require('./auth/checkToken.js');
 
 router.use('/auth', auth);
 router.use('/register', register);
 router.use('/refresh', refresh);
 router.use('/logout', logout);
 router.use('/agences', getAgences);
-router.use('/download' , download)
+router.use('/download' , download);
+router.use('/checkToken', checkToken)
 
 router.use(verifyJWT);
 router.use('/transactions', transactions);

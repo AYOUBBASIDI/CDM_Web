@@ -11,6 +11,7 @@ import Popup from '../../components/Popup.js';
 
 function Dashboard() {
     const [currentDate, setDate] = useState('');
+    console.log(sessionStorage.getItem('user'));
     const [load, loading] = useState(false);
     const [data, setData] = useState([]);
     const [activites, setActivites] = useState([]);

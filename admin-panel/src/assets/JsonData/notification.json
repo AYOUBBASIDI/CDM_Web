@@ -1,0 +1,10 @@
+[
+    {
+        "icon": "bx bx-error",
+        "content": "Line 7 is down or out of service"
+    },
+    {
+        "icon": "bx bx-check-circle",
+        "content": "Bus No. 3 will be 30 minutes late, e-mail has been successfully sent to passengers"
+    }
+]

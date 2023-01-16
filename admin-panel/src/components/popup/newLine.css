@@ -1,0 +1,102 @@
+.newline-popup{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0000004d;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-new-line{
+    background-color: var(--second-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 25%;
+    align-items: center;
+}
+
+.form-new-line label input {
+    height: 100%;
+    width: 100%;
+    padding: 10px 60px 10px 20px;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    color: var(--txt-color);
+    background-color: var(--main-bg);
+    width: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+.form-new-line label p {
+    margin-left: 10px;
+}
+
+.form-new-line label p span{
+    color: var(--main-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.form-new-line label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+
+.form-new-line form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.add-station{
+    display: flex;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    border: solid 2px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.add-station:hover{
+    background-image: linear-gradient( to right, var(--main-color), var(--second-color) );
+    color: var(--txt-white);
+    cursor: pointer;
+    border-color: var(--main-color);
+}
+
+
+#label-add-station{
+    width: 50%;
+}
+
+.inputs-section{
+    display: flex;
+    justify-content: space-between;
+}
+.inputs-section .time{
+    width: 41%;
+}
+.inputs-section .name {
+    width: 57%;
+}
+
+.closed{
+    top: -100%;
+    transition: all 500ms;
+}
+
+
+.pop{
+    top: 0%;
+    transition: all 500ms;
+}

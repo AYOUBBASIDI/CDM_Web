@@ -1,0 +1,10 @@
+[{"id":1,"depart":"Rabat","stations":"Casablanca - Mohammedia - Jdida","arrive":"Safi","bus":"Rabat 1","places_number":"32"},
+{"id":2,"depart":"Tanger","stations":"Tétouan - Chefchaoun - AlHociema","arrive":"Nador","bus":"Tanger 1","places_number":"28"},
+{"id":3,"depart":"Nador","stations":"Saidia - Berkan","arrive":"Oujda","bus":"Nador 1","places_number":"32"},
+{"id":4,"depart":"Oujda","stations":"Fes - Meknas - Rabat - Mohemmedia","arrive":"Casablanca","bus":"Oujda 1","places_number":"32"},
+{"id":5,"depart":"Safi","stations":"Jdida - Mohammedia - Casablanca","arrive":"Rabat","bus":"Safi 1","places_number":"34"},
+{"id":6,"depart":"Nador","stations":"AlHociema - Chefchaoun - Tétouan","arrive":"Tanger","bus":"Nador 1","places_number":"34"},
+{"id":7,"depart":"Oujda","stations":"Berkan - Saidia","arrive":"Nador","bus":"Oujda 2","places_number":"32"},
+{"id":8,"depart":"Casablanca","stations":"Mohemmedia - Rabat - Meknas - Fes","arrive":"Oujda","bus":"Casa 1","places_number":"34"},
+{"id":9,"depart":"Merrakech","stations":"Bengerir - Settat","arrive":"Kouribga","bus":"Merrakech 1","places_number":"28"}
+]

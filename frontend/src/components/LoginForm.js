@@ -37,6 +37,12 @@ function LoginFormComponent() {
                 alert.error(<p className='text-center'>Identifiant incorrect</p>, {timeout: 3000})
             }else if(res.data.message === 'Wrong password'){
                 alert.error(<p className='text-center'>Mot de passe incorrect</p>, {timeout: 3000})
+            }else if(res.data.message === 'Welcome Admin'){
+                alert.success(<p className='text-center'>Welcome Admin ,Please check You Email</p>, {
+                    timeout: 3000,
+                }); 
+                reset();
+                setpwd('');
             }else{
                 alert.success(<p className='text-center'>Your Logged In</p>, {
                     timeout: 3000,
