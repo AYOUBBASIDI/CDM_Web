@@ -54,7 +54,7 @@ const downloadRB = async (req, res) => {
             .then(res => {
                 // download file now
                 open(document.path);
-                //delete file after download
+                // delete file after download
                 setTimeout(() => {
                     fs.unlinkSync(document
                         .path);

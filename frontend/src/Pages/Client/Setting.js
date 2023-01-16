@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/Header.js';
 import { useState } from 'react';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import axios from 'axios';
 function Setting() {  
 
     const user = JSON.parse(localStorage.getItem('user'));
+    const accountStatus = JSON.parse(localStorage.getItem('status'));
     const [update , setUpdate] = useState(false);
     const [newPass , setNewPass] = useState(false);
     const [nom , setNom] = useState(user.nom);
@@ -17,6 +18,7 @@ function Setting() {
     const [pwd , setPwd] = useState('*********');
     const [ConfirmPwd , setConfirmPwd] = useState('');
     const [oldPwd, setOldPwd] = useState('');
+
 
     const handleUpdate = () => {
         console.log('update')
@@ -118,7 +120,26 @@ function Setting() {
 
     const HandleDisable = () => {
         if (window.confirm("Voulez-vous vraiment désactiver votre compte ?")) {
-            console.log("Accepted")
+            const token = localStorage.getItem('token');
+            const options = {
+                url: 'http://localhost:8080/api/cdm/user/disable/'+user._id,
+                method: 'POST',
+                headers: {
+                },
+                data: {}
+            };
+            axios(options)
+            .then(response => {
+                console.log(response.data);
+                if (window.confirm("Votre compte a été désactivé avec succès. Voulez-vous vous disconnecter ?")) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    localStorage.setItem('isLogged',false);
+                    window.location.href = '/login';
+                }else{
+                    window.location.href = '/client/';
+                }
+            });
         } else {
             console.log("Declined")
         }
@@ -202,7 +223,8 @@ function Setting() {
                     }
                     
                 </div>
-
+                    {
+                    accountStatus === "active" ?
                 <div className='flex flex-row-reverse'>
                     <div className='third-color border-danger p-2  w-fit'>
                         <p className='underline text-lg font-bold'>Zone dangereuse :</p>
@@ -212,6 +234,17 @@ function Setting() {
                         </div>
                     </div>
                 </div>
+                :
+                <div className='flex flex-row-reverse'>
+                    <div className='text-green-600 border-green p-2  w-fit'>
+                        <p className='underline text-lg font-bold'>Zone de confort :</p>
+                        <p>Pour Activer votre compte Click sur le Bouton Activer</p>
+                        <div className='text-right'>
+                            <button  className='bg-green-600 p-1/2 px-8 rounded-lg text-white' onClick={()=> HandleDisable()}>Activer</button>
+                        </div>
+                    </div>
+                </div>
+                }
                 
             </div>
             </div>

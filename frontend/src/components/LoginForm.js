@@ -42,6 +42,7 @@ function LoginFormComponent() {
                     timeout: 3000,
                     onClose: async() => {
                         localStorage.setItem('user', JSON.stringify(res.data.user));
+                        localStorage.setItem('status', JSON.stringify(res.data.account.status));
                         localStorage.setItem('token', res.data.accessToken);
                         localStorage.setItem('isLogged', true);
                         window.location.href = '/client/';

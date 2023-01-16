@@ -74,6 +74,12 @@ code {
   border: solid 2px #E7004C;
   border-radius: 5px;
 }
+
+.border-green{
+  border: solid 2px #16a34a;
+  border-radius: 5px;
+}
+
 .tiny-separated{
   height: 0.01rem;
   background: #C5C5C5;

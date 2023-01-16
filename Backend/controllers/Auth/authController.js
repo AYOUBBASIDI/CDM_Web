@@ -31,8 +31,10 @@ const handleLogin = async (req, res) => {
             );
             // Saving refreshToken with current user
             await Users.updateOne({ cin: foundUser.cin}, { refreshToken: refreshToken });
+            // get satatus of account
+            const account = await Account.findOne({ identifiant: foundUser.identifiant });
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-            res.json({ accessToken , user: foundUser});
+            res.json({ accessToken , user: foundUser , account: account});
         } else {
             res.status(200).json({ 'message': 'Wrong password'});
         } 

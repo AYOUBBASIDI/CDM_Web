@@ -113,7 +113,7 @@ const getEmail = (nom, prenom, identifiant, password) => {
                         </tr>
                         <tr>
                             <td style="text-align:center;">
-                                <a href="http://ayoubbasidi.me/" title="logo" target="_blank">
+                                <a href="http://localhost:3000" title="logo" target="_blank">
                                 <img width="100" src="https://seeklogo.com/images/C/credit-du-maroc-logo-80D6D85982-seeklogo.com.png" title="logo" alt="logo">
                             </a>
                             </td>
@@ -141,10 +141,10 @@ const getEmail = (nom, prenom, identifiant, password) => {
                                                 <strong
                                                     style="display: block;font-size: 13px; margin: 0 0 4px; color:rgba(0,0,0,.64); font-weight:normal;">Identifiant</strong>${identifiant}
                                                 <strong
-                                                    style="display: block; font-size: 13px; margin: 24px 0 4px 0; font-weight:normal; color:rgba(0,0,0,.64);">Mot de passe</strong><span style="background: #B5DEFF;position: absolute;width: 20%;height: 100%;top: 0;left: 40%; font-size: 15px; cursor: pointer; color: #0071CE;" onclick="copyPassword()" id="copier">Copier</span><input style='opacity:0;' value="${password}" id="pwd" hidden>
+                                                    style="display: block; font-size: 13px; margin: 24px 0 4px 0; font-weight:normal; color:rgba(0,0,0,.64);">Mot de passe</strong>${password}
                                             </p>
 
-                                            <a href="http://ayoubbasidi.me/"
+                                            <a href="http://localhost:3000/login"
                                                 style="background:#0071CE;text-decoration:none !important; display:inline-block; font-weight:500; margin-top:24px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">
                                                 Login to your Account</a>
                                         </td>
