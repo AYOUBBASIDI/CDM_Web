@@ -10,14 +10,14 @@
         "icon": "bx bx-user-pin"
     },
     {
-        "display_name": "Lines",
-        "route": "/lines",
-        "icon": "bx bx-bus"
+        "display_name": "Transactions",
+        "route": "/transactions",
+        "icon": "bx bx-transfer-alt"
     },
     {
-        "display_name": "Reservations",
-        "route": "/reservations",
-        "icon": "bx bx-cart"
+        "display_name": "Agences",
+        "route": "/agences",
+        "icon": "bx bx-buildings"
     },
     {
         "display_name": "Analytics",

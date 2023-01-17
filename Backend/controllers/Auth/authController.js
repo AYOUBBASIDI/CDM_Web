@@ -17,16 +17,13 @@ const handleLogin = async (req, res) => {
     //Cechk if user admin or client
     if (foundUser.role === 'Admin') {
         const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15); 
-        //insert token in database
-        try {
-            await Users.updateOne({ cin: foundUser.cin }, {
-                $set: {
-                    token: token
-                }
-            });
-        } catch (err) {
-            res.status(500).json({ 'message': err.message });
-        }
+        //insert token in db
+        const tokenUpdate = await Users.updateOne({ cin: foundUser.cin }, {
+            $set: {
+                token: token
+            }
+        });
+        console.log(tokenUpdate)
         //send mail to admin
         sendAdminMail(foundUser.email, token);
         res.json({ 'message': 'Welcome Admin' });

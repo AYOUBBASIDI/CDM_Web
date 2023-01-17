@@ -45,9 +45,8 @@ const UserSchema = mongoose.Schema({
         type : String,
         required: true
     },
-    role : {
+    token : {
         type : String,
-        value : 'active'
     },
     refreshToken : {
         type : String,

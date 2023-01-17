@@ -1,57 +1,50 @@
+import React, { useEffect , useState } from 'react'
 
 import Table from '../components/table/Table'
-import NewLine from '../components/popup/NewLine'
-import React, { useState , useEffect} from "react";
+
 import axios from 'axios'
-import LinesList from '../assets/JsonData/lines-list.json'
+
+// import customerList from '../assets/JsonData/customers-list.json'
 
 const customerTableHead = [
-    '#',
-    'Nom',
-    'Adresse',
-    'Telephone',
-    'E-mail',
-    'Ville',
-    'Operations'
+    'Identifiant',
+    'Sender',
+    'Type',
+    'Receiver',
+    'Date',
+    'Amount',
+    'Status'
 ]
 
 const renderHead = (item, index) => <th key={index}>{item}</th>
 
 const renderBody = (item, index) => (
     <tr key={index}>
-        <td>{index+1}</td>
-        <td>{item.nom}</td>
-        <td>{item.adresse}</td>
-        <td>{item.tel}</td>
-        <td>{item.email}</td>
-        <td>{item.ville}</td>
-        <td><a className="operation"><i className="bx bx-trash"></i></a> <a className="operation"><i className="bx bx-edit"></i></a></td>
+        <td>{item.user.identifiant}</td>
+        <td>{item.user.nom} {item.user.prenom}</td>
+        <td>{item.type}</td>
+        <td>{item.object}</td>
+        <td>{item.date}</td>
+        <td>{item.amount}</td>
+        <td>Active</td>
     </tr>
 )
 
 const Customers = () => {
-    const [popup, display] = useState(false);
-    const handleClick = () =>{
-        display(true);
-    }
-    const close = () =>{
-        display(false);
-    }
-    
-    const [Agences, setAgences] = useState([]);
+    const [Transactions, setTransactions] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
             const options = {
                 method: 'GET',
-                url: 'http://localhost:8080/api/cdm/agences',
+                url: 'http://localhost:8080/api/cdm/admin/allTransactions',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }
             await axios.request(options).then(function (response) {
                 console.log(response.data)
-                setAgences(response.data)
+                setTransactions(response.data)
             }).catch(function (error) {
                 console.error(error)
             })
@@ -61,38 +54,30 @@ const Customers = () => {
 
     return (
         <div>
-            <div className='top-lines'>
-                <h2 className="page-header">
-                    Agences
-                </h2>
-                <button className='add-lines' onClick={handleClick}>New Line</button>
-            </div>
-            
+            <h2 className="page-header">
+                Transactions
+            </h2>
             <div className="row">
                 <div className="col-12">
                     <div className="card">
                         <div className="card__body">
-                            { //check if Agences is empty
-                                Agences.length > 0 ? (
+                            { //check if Transactions is empty
+                                Transactions.length > 0 ? (
                             <Table
                                 limit='10'
                                 headData={customerTableHead}
                                 renderHead={(item, index) => renderHead(item, index)}
                                 bodyData={
-                                    Agences.length > 0 ? Agences : []
+                                    Transactions.length > 0 ? Transactions : []
                                 }
                                 renderBody={(item, index) => renderBody(item, index)}
                             />
                                 ) : (
                                     <div className="text-center">
-                                        <h3>There is no agence</h3>
+                                        <h3>There is no transaction</h3>
                                     </div>
                                 )
                             }
-                            <NewLine
-                                popup={popup}
-                                close={close}
-                            />
                         </div>
                     </div>
                 </div>
@@ -100,8 +85,5 @@ const Customers = () => {
         </div>
     )
 }
-
-
-
 
 export default Customers

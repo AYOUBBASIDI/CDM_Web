@@ -5,8 +5,9 @@ const Access = props => {
     const pathArray = window.location.pathname.split('/');
     const [access, setAccess] = useState(false);
     const id = pathArray[2];
+    
     useEffect(()=>{
-
+        if(id != undefined){
         fetch('http://localhost:8080/api/cdm/checkToken/', 
         {
             method:"POST", 
@@ -26,8 +27,9 @@ const Access = props => {
                 setAccess(true)
             }
         });
-        
+    }
     },[])
+
     
     if(access){
 

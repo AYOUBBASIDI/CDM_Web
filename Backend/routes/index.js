@@ -20,14 +20,14 @@ router.use('/refresh', refresh);
 router.use('/logout', logout);
 router.use('/agences', getAgences);
 router.use('/download' , download);
-router.use('/checkToken', checkToken)
+router.use('/checkToken', checkToken);
+router.use('/admin' , admin);
 
 router.use(verifyJWT);
 router.use('/transactions', transactions);
 router.use('/recharge', recharge);
 router.use('/activites' , activites);
 router.use('/user' , user);
-router.use('/admin' , admin);
 
 
 module.exports = router;

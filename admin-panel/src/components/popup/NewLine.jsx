@@ -60,108 +60,52 @@ const NewLine = props => {
     return (
         <div className={`newline-popup ${!props.popup ? 'closed' : 'pop'}`}>
             <div className='form-new-line card'>
-               <h3>Add New Line</h3>
+               <h3>Add New Agence</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label>
-                       <p>Line Number</p>
+                       <p>Nom</p>
                             <input 
                             type='text'
                             name='linenumber'
                             {...register("lineNumber")}
-                            placeholder='##'
                             required 
                             />
                     </label>
                     <label>
-                       <p>Bus Number</p>
+                       <p>Adresse</p>
                             <input 
                             type='text'
                             name='linenumber'
                             {...register("busNumber")}
-                            placeholder='##'
                             required 
                             />
                     </label>
                     <label>
-                       <p>Available Seats</p>
+                       <p>Telephone</p>
                             <input 
                             type='text'
                             name='linenumber'
                             {...register("seats")}
-                            placeholder='##'
                             required 
                             />
                     </label>
                     <label>
-                       <p>Line Depart</p>
-                       <div className='inputs-section'>
+                       <p>E-mail</p>
                             <input 
                             type='text'
                             name='linenumber'
-                            placeholder='Depart Name'
-                            {...register("departCity")}
-                            class="name"
+                            {...register("seats")}
                             required 
                             />
-                            <input 
-                            type='text'
-                            name='linenumber'
-                            placeholder='Depart Time'
-                            {...register("departTime")}
-                            class="time"
-                            required 
-                            /> 
-                       </div> 
-                    </label>
-                    {stations.map((item, index) => (
-                    <label>
-                       <p>Line Station {item} {(item === stations.length)? <span onClick={removeStation}>Remove</span> : ''}</p>
-                       <div className='inputs-section'>
-                            <input 
-                            type='text'
-                            name='linenumber'
-                            placeholder='Station Name'
-                            onChange={(e) => setStationName(item,e.target.value)}
-                            class="name"
-                            required
-                            />
-                            <input 
-                            type='text'
-                            name='linenumber'
-                            placeholder='Station Time'
-                            onChange={(e) => setStationTime(item,e.target.value)}
-                            class="time"
-                            required 
-                            /> 
-                       </div>
-                       
-                    </label>
-                    ))}
-                    <label id='label-add-station'>
-                       <div onClick={addStation} className='add-station sidebar__item-inner'>
-                            Add Station
-                       </div>
                     </label>
                     <label>
-                       <p>Line Arrive</p>
-                       <div className='inputs-section'>
+                       <p>Ville</p>
                             <input 
                             type='text'
                             name='linenumber'
-                            placeholder='Arrive Name'
-                            {...register("arriveCity")}
-                            class="name"
+                            {...register("seats")}
                             required 
                             />
-                            <input 
-                            type='text'
-                            name='linenumber'
-                            placeholder='Arrive Time'
-                            {...register("arriveTime")}
-                            class="time"
-                            required 
-                            /> 
-                       </div>  
                     </label>
                     <label>
                        <div className='add-station sidebar__item-inner'>
