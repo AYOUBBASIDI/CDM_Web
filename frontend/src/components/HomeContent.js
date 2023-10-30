@@ -2,7 +2,6 @@ import React from 'react';
 import back1 from '../assets/img/back1.jpg';
 
 function HomeContent() {
-
     const menu = [
         {
             name: 'Devenir client',

@@ -15,8 +15,8 @@ function ClientGenre(props) {
         formState: { errors },
      } = useForm();
      const onSubmit = (data) => {
-        console.log(data);
-        axios.post('http://localhost:8080/api/cdm/register', data)
+        const apiUrl = process.env.REACT_APP_API_URL;
+        axios.post(apiUrl+'/api/cdm/register', data)
         .then(res => {
             alert.success(<p className='text-center'>Votre compte a été créé avec succès<br/>Vérifiez votre e-mail</p>, {
                 timeout: 3000,

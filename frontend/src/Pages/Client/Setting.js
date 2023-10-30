@@ -61,8 +61,9 @@ function Setting() {
                 address : address
             }
             const token = localStorage.getItem('token');
+            const apiUrl = process.env.REACT_APP_API_URL;
             const options = {
-                url: 'http://localhost:8080/api/cdm/user/update/'+user._id,
+                url: apiUrl+'/api/cdm/user/update/'+user._id,
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer '+token,
@@ -96,8 +97,9 @@ function Setting() {
                 newPassword : pwd
             }
             const token = localStorage.getItem('token');
+            const apiUrl = process.env.REACT_APP_API_URL;
             const options = {
-                url: 'http://localhost:8080/api/cdm/user/updatePassword/'+user._id,
+                url: apiUrl+'/api/cdm/user/updatePassword/'+user._id,
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer '+token,
@@ -122,8 +124,9 @@ function Setting() {
     const HandleDisable = () => {
         if (window.confirm("Voulez-vous vraiment désactiver votre compte ?")) {
             const token = localStorage.getItem('token');
+            const apiUrl = process.env.REACT_APP_API_URL;
             const options = {
-                url: 'http://localhost:8080/api/cdm/user/disable/'+user.identifiant,
+                url: apiUrl+'/api/cdm/user/disable/'+user.identifiant,
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer '+token,
@@ -148,8 +151,9 @@ function Setting() {
     const HandleActive = () => {
         if (window.confirm("Voulez-vous vraiment activer votre compte ?")) {
             const token = localStorage.getItem('token');
+            const apiUrl = process.env.REACT_APP_API_URL;
             const options = {
-                url: 'http://localhost:8080/api/cdm/user/enable/'+user.identifiant,
+                url: apiUrl+'/api/cdm/user/enable/'+user.identifiant,
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer '+token,

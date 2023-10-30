@@ -21,8 +21,9 @@ const Popup = ({ operation, open, type, sender, handleConfirm }) => {
               const token = localStorage.getItem('token'); 
               data.amount = parseInt(data.amount);
               data.sender = sender.identifiant;
+              const apiUrl = process.env.REACT_APP_API_URL;
               const options = {
-                  url: 'http://localhost:8080/api/cdm/transactions',
+                  url: apiUrl+'/api/cdm/transactions',
                   method: 'POST',
                   headers: {
                       'Authorization': 'Bearer ' + token,
@@ -45,8 +46,9 @@ const Popup = ({ operation, open, type, sender, handleConfirm }) => {
                 data.sender = sender.identifiant;
                 data.amount = montant;
                 const token = localStorage.getItem('token');
+                const apiUrl = process.env.REACT_APP_API_URL;
                 const options = {
-                  url: 'http://localhost:8080/api/cdm/recharge',
+                  url: apiUrl+'/api/cdm/recharge',
                   method: 'POST',
                   headers: {
                       'Authorization': 'Bearer ' + token,

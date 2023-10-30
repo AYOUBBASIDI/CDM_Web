@@ -31,7 +31,8 @@ function LoginFormComponent() {
      } = useForm();
      const onSubmit = (data) => {
         data.password = pwd;
-        axios.post('http://localhost:8080/api/cdm/auth', data)
+        const apiUrl = process.env.REACT_APP_API_URL;
+        axios.post(apiUrl+'/api/cdm/auth', data)
         .then(res => {            
             if(res.data.message === 'No account'){
                 alert.error(<p className='text-center'>Identifiant incorrect</p>, {timeout: 3000})

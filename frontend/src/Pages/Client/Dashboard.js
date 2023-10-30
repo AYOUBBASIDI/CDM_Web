@@ -93,8 +93,9 @@ function Dashboard() {
         loading(true);
         const token = localStorage.getItem('token'); 
         const user = JSON.parse(localStorage.getItem('user'));
+        const apiUrl = process.env.REACT_APP_API_URL;
         const options = {
-            url: 'http://localhost:8080/api/cdm/download/'+user._id,
+            url: apiUrl+'/api/cdm/download/'+user._id,
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer '+token,
@@ -216,12 +217,13 @@ const getData = async () =>{
     const data = [];
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
+    const apiUrl = process.env.REACT_APP_API_URL;
     const config = {
         headers: {
             'Authorization': 'Bearer ' + token,
           }
     };
-    await axios.get('http://localhost:8080/api/cdm/user/'+user._id,
+    await axios.get(apiUrl+'/api/cdm/user/'+user._id,
     config
     )
     .then(res => {
@@ -229,7 +231,7 @@ const getData = async () =>{
         data["user"] = res.data.user;
     }
     );
-    await axios.get('http://localhost:8080/api/cdm/activites/'+user._id,config)
+    await axios.get(apiUrl+'/api/cdm/activites/'+user._id,config)
     .then(res => {
         data["activites"] = res.data.transactions;
     }

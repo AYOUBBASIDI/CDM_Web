@@ -9,8 +9,16 @@ import NotFound from './Pages/404.js';
 
 function App() {
   const isLogged = localStorage.getItem('isLogged');
-  console.log(isLogged);
-  if(isLogged == 'true'){
+  const token = localStorage.getItem('token')
+
+
+  if(isLogged === 'true'){
+    if(token === null){
+      localStorage.removeItem('token');
+      localStorage.setItem('isLogged' , 'false');
+      localStorage.removeItem('user');
+      window.location.href = '/';
+    }
   return (
     <Router>
       <Routes>
@@ -28,6 +36,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="*" element={<NotFound/>} />
+          <Route path="/client/" element={<LoginForm />} />
         </Routes>
       </Router>
     );
@@ -35,3 +44,5 @@ function App() {
 }
 
 export default App;
+
+
