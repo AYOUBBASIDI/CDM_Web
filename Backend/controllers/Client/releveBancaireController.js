@@ -53,16 +53,25 @@ const downloadRB = async (req, res) => {
         pdf.create(document, options)
             .then(res => {
                 // download file now
-                open(document.path);
+                // open(document.path);
+                // // delete file after download
+                // setTimeout(() => {
+                //     fs.unlinkSync(document
+                //         .path);
+                // }, 10000);
+
+                    res.setHeader('Content-Type', 'application/pdf');
+                res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+                res.status(200).send(pdfData);
+                
                 // delete file after download
                 setTimeout(() => {
-                    fs.unlinkSync(document
-                        .path);
+                    fs.unlinkSync(document.path);
                 }, 10000);
             }).catch(error => {
                 console.log(error);
             });
-            res.json({message: 'success'});
+            // res.json({message: 'success'});
 
     } catch (err) {
         res.status(500).json({ message: err.message });
