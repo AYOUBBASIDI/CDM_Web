@@ -39,6 +39,17 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 // router
 app.use('/api/cdm/', router);
 app.use('/docs', express.static(path.join(__dirname, 'docs')));
+ 
+
+
+app.get('/images/:filename', (req, res) => {
+    const filename = req.params.filename;
+    const imagePath = path.join(__dirname, 'images', filename);
+    res.sendFile(imagePath);
+});
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+
 
 app.all('*', (req, res) => {
     res.status(404);

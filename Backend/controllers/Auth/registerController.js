@@ -24,6 +24,7 @@ const handleNewUser = async (req, res) => {
             identifiant = generateIdentifiant();
             duplicateIdentifiant = await Account.countDocuments({ identifiant: identifiant });
         }
+        console.log(identifiant, password)
         //store the new user
         const newUser = new Users({
             nom: nom,

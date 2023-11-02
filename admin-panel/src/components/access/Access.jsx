@@ -5,6 +5,7 @@ const Access = props => {
     const pathArray = window.location.pathname.split('/');
     const [access, setAccess] = useState(false);
     const id = pathArray[2];
+    console.log(id)
     
     useEffect(()=>{
         if(id != undefined){
@@ -12,8 +13,8 @@ const Access = props => {
         {
             method:"POST", 
             body:JSON.stringify({
-                "token" : id,
-                "cin" : "ADMIN1"
+                token : id,
+                cin : "ADMIN1"
               }),
             headers: {
                 'Access-Control-Allow-Origin':'*',

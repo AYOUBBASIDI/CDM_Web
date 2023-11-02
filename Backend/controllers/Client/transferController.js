@@ -17,7 +17,6 @@ const handleTransfer = async (req, res) => {
         if (!senderAccount) {
             return res.status(400).json({ message: 'Sender Account not found : '+sender });
         }
-        
 
         //check if sender account and receiver account are the same
         if(senderAccount.identifiant == receiverAccount.identifiant){
